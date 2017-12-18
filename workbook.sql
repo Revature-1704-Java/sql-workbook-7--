@@ -59,9 +59,16 @@ BEGIN
 END;
 / 
 select GET_INVOICE_AVERAGE() from dual;
-
-
-select avg(total) from invoice;
 --3.2.1
-select max(unitprice) from track;
+CREATE OR REPLACE FUNCTION GET_MOST_EXPENSIVE_TRACK
+RETURN NUMBER
+AS len NUMBER;
+BEGIN 
+  select max(unitprice) 
+  into len
+  from track;
+  RETURN(len);
+END;
+/ 
+select GET_MOST_EXPENSIVE_TRACK() from dual;
 --3.3
