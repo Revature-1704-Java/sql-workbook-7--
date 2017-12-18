@@ -48,6 +48,20 @@ END ;
 /
 select GET_MEDIATYPE_LENGTH() from dual;
 --3.2
+CREATE OR REPLACE FUNCTION GET_INVOICE_AVERAGE
+RETURN NUMBER
+AS len NUMBER;
+BEGIN 
+  select avg(total) 
+  into len
+  from invoice;
+  RETURN(len);
+END;
+/ 
+select GET_INVOICE_AVERAGE() from dual;
+
+
 select avg(total) from invoice;
+--3.2.1
 select max(unitprice) from track;
 --3.3
