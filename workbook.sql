@@ -72,3 +72,23 @@ END;
 / 
 select GET_MOST_EXPENSIVE_TRACK() from dual;
 --3.3
+CREATE OR REPLACE FUNCTION GET_AVERAGE_INVOCELINE_PRICE
+RETURN NUMBER
+AS len NUMBER;
+BEGIN 
+  select avg(unitprice) 
+  into len
+  from invoiceline;
+  RETURN(len);
+END;
+/
+select GET_AVERAGE_INVOCELINE_PRICE() from dual;
+--3.4
+CREATE OR REPLACE FUNCTION GET_ALL_EMPLOYEES_BORN_AFTER_1968
+RETURN T
+AS employees T;
+  select *
+  into employees
+  from employee;
+
+
